@@ -56,7 +56,7 @@ class _GuidelineState extends State<Guideline> {
                   textColor: Colors.white,
                   padding: const EdgeInsets.all(0.0),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(28.0),
                   ),
                   child: Container(
                     width: MediaQuery.of(context).size.width / 1.4,
@@ -64,7 +64,7 @@ class _GuidelineState extends State<Guideline> {
                     decoration: const BoxDecoration(
                       color: CustomColor.GreenDark,
                       borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+                        Radius.circular(28.0),
                       ),
                       boxShadow: [
                         BoxShadow(
