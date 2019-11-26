@@ -9,6 +9,7 @@ class Register1 extends StatefulWidget {
 }
 
 class _Register1State extends State<Register1> {
+  String _date = "Masukkan tanggal lahir";
   @override
   void initState() {
     super.initState();
@@ -124,7 +125,7 @@ class _Register1State extends State<Register1> {
                   padding:
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                   child: Icon(
-                    Icons.lock_open,
+                    Icons.contacts,
                     color: Colors.grey,
                   ),
                 ),
@@ -149,7 +150,7 @@ class _Register1State extends State<Register1> {
           Padding(
             padding: const EdgeInsets.only(left: 40.0),
             child: Text(
-              "Nomor Nomor Induk Penduduk",
+              "Nomor Induk Penduduk",
               style: TextStyle(color: Colors.grey, fontSize: 16.0),
             ),
           ),
@@ -169,7 +170,7 @@ class _Register1State extends State<Register1> {
                   padding:
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                   child: Icon(
-                    Icons.lock_open,
+                    Icons.portrait,
                     color: Colors.grey,
                   ),
                 ),
@@ -214,8 +215,8 @@ class _Register1State extends State<Register1> {
                   padding:
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                   child: Icon(
-                    Icons.lock_open,
-                    color: Colors.grey,
+                    Icons.calendar_today,
+                    color: Colors.blueGrey
                   ),
                 ),
                 Container(
@@ -226,18 +227,20 @@ class _Register1State extends State<Register1> {
                 ),
                 new Expanded(
                   child:FlatButton(
-                    onPressed: () {
+                     onPressed: () {
                         DatePicker.showDatePicker(context,
                                               showTitleActions: true,
                                               minTime: DateTime(1900, 3, 5),
-                                              maxTime: DateTime(2019, 6, 7), onChanged: (date) {
-                                            print('change $date');
-                                          }, onConfirm: (date) {
-                                            print('confirm $date');
-                                          }, currentTime: DateTime.now(), locale: LocaleType.id);
+                                              maxTime: DateTime(2019, 6, 7), onConfirm: (date) {
+                    print('confirm $date');
+                    _date = '${date.year} - ${date.month} - ${date.day}';
+                    setState(() {});
+                  }, currentTime: DateTime.now(), locale: LocaleType.id);
                     },
                     child: Text(
-                      'Masukkan tanggal lahir',
+                      
+                      '$_date',
+                      textAlign: TextAlign.left,
                         style: TextStyle(color: Colors.grey),
                     ),
                   ),
@@ -251,7 +254,13 @@ class _Register1State extends State<Register1> {
             child: new Row(
               children: <Widget>[
                 new Expanded(
-                  child: FlatButton(
+                  child: RaisedButton(
+                    onPressed: (){
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Beranda()),
+                              );
+                    },
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30.0)),
                         splashColor: CustomColor.GreenLight,
@@ -266,7 +275,9 @@ class _Register1State extends State<Register1> {
                           ),
                         ),
                         new Expanded(
-                          child: Container(),
+                          child: Container(
+                            
+                          ),
                         ),
                         new Transform.translate(
                           offset: Offset(15.0, 0.0),
@@ -293,7 +304,7 @@ class _Register1State extends State<Register1> {
                         )
                       ],
                     ),
-                    onPressed: () => {},
+                   
                   ),
                 ),
               ],

@@ -36,6 +36,7 @@ class _GuidelineState extends State<Guideline> {
                 ),
               ),
               Expanded(
+                
                 flex: 0,
                 child: Column(
                   children: <Widget>[

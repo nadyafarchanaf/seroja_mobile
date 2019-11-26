@@ -195,7 +195,12 @@ class _LoginState extends State<Login> {
                         )
                       ],
                     ),
-                    onPressed: () => {},
+                    onPressed: (){
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Beranda()),
+                              );
+                              },
                   ),
                 ),
               ],

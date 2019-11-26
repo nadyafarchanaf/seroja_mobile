@@ -19,7 +19,7 @@ class _BerandaState extends State<Beranda> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: fullAppbar(context),
+      appBar: belumdaftarAppbar(context),
       body: Container(
         width: MediaQuery.of(context).size.width,
         child: ListView(
@@ -277,7 +277,7 @@ class _BerandaState extends State<Beranda> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Image.asset('assets/images/checked-empty.png'),
+                  Image.asset('assets/checked-empty.png'),
                   Text(
                     '08.00 AM',
                     style: TextStyle(color: CustomColor.TextGrey),
@@ -291,7 +291,7 @@ class _BerandaState extends State<Beranda> {
                           fontWeight: FontWeight.w600),
                     ),
                   ),
-                  Image.asset('assets/images/bell-small.png'),
+                  Image.asset('assets/bell-small.png'),
                 ],
               ),
               decoration: BoxDecoration(
@@ -318,7 +318,7 @@ class _BerandaState extends State<Beranda> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Image.asset('assets/images/checked-empty.png'),
+                  Image.asset('assets/checked-empty.png'),
                   Text(
                     '10.00 AM',
                     style: TextStyle(color: CustomColor.TextGrey),
@@ -332,7 +332,7 @@ class _BerandaState extends State<Beranda> {
                           fontWeight: FontWeight.w600),
                     ),
                   ),
-                  Image.asset('assets/images/bell-small-yellow.png'),
+                  Image.asset('assets/bell-small-yellow.png'),
                 ],
               ),
               decoration: BoxDecoration(
@@ -359,7 +359,7 @@ class _BerandaState extends State<Beranda> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Image.asset('assets/images/checked-empty.png'),
+                  Image.asset('assets/checked-empty.png'),
                   Text(
                     '13.00 PM',
                     style: TextStyle(color: CustomColor.TextGrey),
@@ -367,7 +367,7 @@ class _BerandaState extends State<Beranda> {
                   Container(
                     width: 180,
                     child: Text(
-                      'Email client',
+                      'Poli Mata',
                       style: TextStyle(
                           color: CustomColor.TextHeader,
                           fontWeight: FontWeight.w600),
