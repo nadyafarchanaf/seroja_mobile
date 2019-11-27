@@ -1,10 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:seroja/beranda.dart';
 import 'color.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class Modal{
   String _date = "Pilih tanggal";
+  Future<File> imageFile;
+ 
+  pickImageFromGallery(ImageSource source) {
+    return 
+      imageFile = ImagePicker.pickImage(source: source);
+    
+  }
+  Widget showImage() {
+    return FutureBuilder<File>(
+      future: imageFile,
+      builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done &&
+            snapshot.data != null) {
+          return Image.file(
+            snapshot.data,
+            width: 300,
+            height: 300,
+          );
+        } else if (snapshot.error != null) {
+          return const Text(
+            'Error Picking Image',
+            textAlign: TextAlign.center,
+          );
+        } else {
+          return const Text(
+            'No Image Selected',
+            textAlign: TextAlign.center,
+          );
+        }
+      },
+    );
+  }
   mainBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -81,8 +115,8 @@ class Modal{
                           SizedBox(height: 10),
                           Container(
                             width: MediaQuery.of(context).size.width / 1.2,
-                            height: 75,
-                            padding: EdgeInsets.only(top: 10),
+                            height: 73,
+                            padding: EdgeInsets.only(top: 5),
                             decoration: BoxDecoration(
                               border: Border(
                                 top: BorderSide(
@@ -109,7 +143,7 @@ class Modal{
                                       ),
                                       
                                       Container(
-                                          width: MediaQuery.of(context).size.width / 1.2,
+                                          width: MediaQuery.of(context).size.width /1,
                                           child: TextFormField(
                                             autofocus: true,
                                             style: TextStyle(
@@ -136,9 +170,8 @@ class Modal{
                           ),
                            Container(
                             width: MediaQuery.of(context).size.width / 1.2,
-                            height: 50,
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            child: ListView(
+                            height: 40,
+                           child: ListView(
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
                               children: <Widget>[
@@ -188,8 +221,7 @@ class Modal{
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width / 1.2,
-                            height: 50,
-                            padding: EdgeInsets.symmetric(vertical: 10),
+                            height: 40,
                             child: ListView(
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
@@ -240,8 +272,7 @@ class Modal{
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width / 1.2,
-                            height: 50,
-                            padding: EdgeInsets.symmetric(vertical: 10),
+                            height: 40,
                             decoration: BoxDecoration(
                               border: Border(
                                 
@@ -298,7 +329,7 @@ class Modal{
                               ],
                             ),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 5),
                           Container(
                             width: MediaQuery.of(context).size.width / 1.2,
                             child: Text(
@@ -311,7 +342,7 @@ class Modal{
                                       ),
                             ),
                           ),
-                          SizedBox(height: 10),
+                          
                           Container(
                             width: MediaQuery.of(context).size.width / 1.2,
                             child: FlatButton(
@@ -333,7 +364,49 @@ class Modal{
                             ),
                           ),
                           ),
-                          SizedBox(height: 20),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            height: 90,
+                            padding: EdgeInsets.only(top: 5),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                top: BorderSide(
+                                  width: 1.0,
+                                  color: CustomColor.GreyBorder,
+                                ),
+                                
+                              ),
+                            ),
+                          child : Column(
+                            children : <Widget> [
+                            Container (
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            child: Text(
+                              'Upload Foto Kartu BPJS',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: CustomColor.TextHeader,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+          
+        showImage(),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(28.0),
+                            ),
+              child: Text("Pilih gambar dari galeri"),
+              onPressed: () {
+                pickImageFromGallery(ImageSource.gallery);
+              },
+            ),
+        
+          ],
+        ),
+                    
+          
+                          ),
+                          SizedBox(height: 10),
                           RaisedButton(
                             onPressed: () {
                               Navigator.pushReplacement(

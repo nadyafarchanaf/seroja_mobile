@@ -301,7 +301,7 @@ class _Register1State extends State<Register1> {
                   EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                   child: Icon(
                     Icons.calendar_today,
-                    color: Colors.blueGrey
+                    color: Colors.grey
                   ),
                 ),
                 Container(
@@ -480,7 +480,10 @@ class _Register1State extends State<Register1> {
           children: <Widget>[
             showImage(),
             RaisedButton(
-              child: Text("Select Image from Gallery"),
+              shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(28.0),
+                            ),
+              child: Text("Pilih gambar dari galeri"),
               onPressed: () {
                 pickImageFromGallery(ImageSource.gallery);
               },
