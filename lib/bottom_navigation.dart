@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:seroja/beranda.dart';
 import 'color.dart';
 
@@ -40,24 +39,13 @@ class BottomNavigationBarApp extends StatelessWidget {
           ),
           title: Text('Beranda'),
         ),
-        BottomNavigationBarItem(
-          icon: Container(
-            margin: EdgeInsets.only(bottom: 5),
-            child: Image.asset(
-              'assets/task.png',
-              color: (bottomNavigationBarIndex == 1)
-                  ? CustomColor.BlueDark
-                  : CustomColor.TextGrey,
-            ),
-          ),
-          title: Text('Riwayat'),
-        ),
+        
         BottomNavigationBarItem(
           icon: Container(
             margin: EdgeInsets.only(bottom: 5),
             child: Image.asset(
               'assets/icon-user.png',
-              color: (bottomNavigationBarIndex == 2)
+              color: (bottomNavigationBarIndex == 1)
                   ? CustomColor.BlueDark
                   : CustomColor.TextGrey,
             ),
