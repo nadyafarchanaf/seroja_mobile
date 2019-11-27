@@ -63,18 +63,23 @@ class _GuidelineState extends State<Guideline> {
                     width: MediaQuery.of(context).size.width / 1.4,
                     height: 50,
                     decoration: const BoxDecoration(
-                      color: CustomColor.GreenDark,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(28.0),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 6.0,
-                          spreadRadius: 3.0,
-                          offset: Offset(0.0, 0.0),
-                        ),
-                      ],
+                      gradient: LinearGradient(
+                                  colors: <Color>[
+                                    CustomColor.BlueLight,
+                                    CustomColor.BlueDark,
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(28.0),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: CustomColor.BlueShadow,
+                                    blurRadius: 2.0,
+                                    spreadRadius: 1.0,
+                                    offset: Offset(0.0, 0.0),
+                                  ),
+                                ],
                     ),
                     padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                     child: Center(

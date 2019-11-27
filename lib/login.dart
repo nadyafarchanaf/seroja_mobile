@@ -22,6 +22,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Center(
         child: Container(
              height: MediaQuery.of(context).size.height,
@@ -60,7 +61,7 @@ class _LoginState extends State<Login> {
           Padding(
             padding: const EdgeInsets.only(left: 40.0),
             child: Text(
-              "Email",
+              "Nomor Induk Penduduk",
               style: TextStyle(color: Colors.grey, fontSize: 16.0),
             ),
           ),
@@ -94,7 +95,7 @@ class _LoginState extends State<Login> {
                   child: TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Masukkan email anda',
+                      hintText: 'Masukkan nomor induk penduduk',
                       hintStyle: TextStyle(color: Colors.grey),
                     ),
                   ),
@@ -105,7 +106,7 @@ class _LoginState extends State<Login> {
           Padding(
             padding: const EdgeInsets.only(left: 40.0),
             child: Text(
-              "Password",
+              "Kata Sandi",
               style: TextStyle(color: Colors.grey, fontSize: 16.0),
             ),
           ),
@@ -139,7 +140,7 @@ class _LoginState extends State<Login> {
                   child: TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Masukkan password anda',
+                      hintText: 'Masukkan kata sandi',
                       hintStyle: TextStyle(color: Colors.grey),
                     ),
                   ),
@@ -154,54 +155,52 @@ class _LoginState extends State<Login> {
               children: <Widget>[
                 new Expanded(
                   child: RaisedButton(
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    splashColor: CustomColor.GreenLight,
-                    color: CustomColor.GreenDark,
-                    child: new Row(
-                      children: <Widget>[
-                        new Padding(
-                          padding: const EdgeInsets.only(left: 20.0),
-                          child: Text(
-                            "LOGIN",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        new Expanded(
-                          child: Container(),
-                        ),
-                        new Transform.translate(
-                          offset: Offset(15.0, 0.0),
-                          child: new Container(
-                            padding: const EdgeInsets.all(5.0),
-                            child: FlatButton(
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius:
-                                  new BorderRadius.circular(28.0)),
-                              splashColor: Colors.white,
-                              color: Colors.white,
-                              child: Icon(
-                                Icons.arrow_forward,
-                                color: CustomColor.GreenDark,
-                              ),
-                              onPressed: (){
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Beranda()),
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => Beranda()),
                               );
-                              },
+                              // Navigator.pop(context);
+                            },
+                            textColor: Colors.white,
+                            padding: const EdgeInsets.all(0.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(21.0),
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.0,
+                              height: 60,
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: <Color>[
+                                    CustomColor.BlueLight,
+                                    CustomColor.BlueDark,
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(21.0),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: CustomColor.BlueShadow,
+                                    blurRadius: 2.0,
+                                    spreadRadius: 1.0,
+                                    offset: Offset(0.0, 0.0),
+                                  ),
+                                ],
+                              ),
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              child: Center(
+                                child: const Text(
+                                  'MASUK',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
                             ),
                           ),
-                        )
-                      ],
-                    ),
-                    onPressed: (){
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Beranda()),
-                              );
-                              },
-                  ),
                 ),
               ],
             ),

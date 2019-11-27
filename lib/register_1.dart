@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:seroja/color.dart';
 import 'package:seroja/beranda.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 class Register1 extends StatefulWidget {
   Register1({Key key}) : super(key: key);
@@ -9,7 +11,40 @@ class Register1 extends StatefulWidget {
 }
 
 class _Register1State extends State<Register1> {
+  Future<File> imageFile;
+ 
+  pickImageFromGallery(ImageSource source) {
+    setState(() {
+      imageFile = ImagePicker.pickImage(source: source);
+    });
+  }
+  Widget showImage() {
+    return FutureBuilder<File>(
+      future: imageFile,
+      builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done &&
+            snapshot.data != null) {
+          return Image.file(
+            snapshot.data,
+            width: 300,
+            height: 300,
+          );
+        } else if (snapshot.error != null) {
+          return const Text(
+            'Error Picking Image',
+            textAlign: TextAlign.center,
+          );
+        } else {
+          return const Text(
+            'No Image Selected',
+            textAlign: TextAlign.center,
+          );
+        }
+      },
+    );
+  }
   String _date = "Masukkan tanggal lahir";
+  
   @override
   void initState() {
     super.initState();
@@ -22,11 +57,15 @@ class _Register1State extends State<Register1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-             height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(
-        color: CustomColor.GreyBackground,
+      resizeToAvoidBottomPadding: false,
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        child : ListView (
+          scrollDirection: Axis.vertical,
+          children: <Widget>[
+           Container(
+            decoration: BoxDecoration(
+            color: CustomColor.GreyBackground,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,7 +133,7 @@ class _Register1State extends State<Register1> {
                   child: TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Masukkan nama anda',
+                      hintText: 'Masukkan nama',
                       hintStyle: TextStyle(color: Colors.grey),
                     ),
                   ),
@@ -139,7 +178,7 @@ class _Register1State extends State<Register1> {
                   child: TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Masukkan nomor rekam medis anda',
+                      hintText: 'Masukkan nomor rekam medis',
                       hintStyle: TextStyle(color: Colors.grey),
                     ),
                   ),
@@ -147,6 +186,7 @@ class _Register1State extends State<Register1> {
               ],
             ),
           ),
+          
           Padding(
             padding: const EdgeInsets.only(left: 40.0),
             child: Text(
@@ -184,7 +224,52 @@ class _Register1State extends State<Register1> {
                   child: TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Masukkan nomor induk penduduk anda',
+                      hintText: 'Masukkan nomor induk penduduk',
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+           Padding(
+            padding: const EdgeInsets.only(left: 40.0),
+            child: Text(
+              "Tempat Tanggal Lahir",
+              style: TextStyle(color: Colors.grey, fontSize: 16.0),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey.withOpacity(0.5),
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            margin:
+            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            child: Row(
+              children: <Widget>[
+                new Padding(
+                  padding:
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                  child: Icon(
+                    Icons.contacts,
+                    color: Colors.grey,
+                  ),
+                ),
+                Container(
+                  height: 30.0,
+                  width: 1.0,
+                  color: Colors.grey.withOpacity(0.5),
+                  margin: const EdgeInsets.only(left: 00.0, right: 10.0),
+                ),
+                new Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Masukkan tempat tanggal lahir',
                       hintStyle: TextStyle(color: Colors.grey),
                     ),
                   ),
@@ -238,7 +323,6 @@ class _Register1State extends State<Register1> {
                   }, currentTime: DateTime.now(), locale: LocaleType.id);
                     },
                     child: Text(
-                      
                       '$_date',
                       textAlign: TextAlign.left,
                         style: TextStyle(color: Colors.grey),
@@ -248,6 +332,162 @@ class _Register1State extends State<Register1> {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(left: 40.0),
+            child: Text(
+              "Nomor Nomor Telepon",
+              style: TextStyle(color: Colors.grey, fontSize: 16.0),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey.withOpacity(0.5),
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            margin:
+            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            child: Row(
+              children: <Widget>[
+                new Padding(
+                  padding:
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                  child: Icon(
+                    Icons.contacts,
+                    color: Colors.grey,
+                  ),
+                ),
+                Container(
+                  height: 30.0,
+                  width: 1.0,
+                  color: Colors.grey.withOpacity(0.5),
+                  margin: const EdgeInsets.only(left: 00.0, right: 10.0),
+                ),
+                new Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Masukkan nomor telepon',
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 40.0),
+            child: Text(
+              "Nomor Alamat",
+              style: TextStyle(color: Colors.grey, fontSize: 16.0),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey.withOpacity(0.5),
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            margin:
+            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            child: Row(
+              children: <Widget>[
+                new Padding(
+                  padding:
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                  child: Icon(
+                    Icons.contacts,
+                    color: Colors.grey,
+                  ),
+                ),
+                Container(
+                  height: 30.0,
+                  width: 1.0,
+                  color: Colors.grey.withOpacity(0.5),
+                  margin: const EdgeInsets.only(left: 00.0, right: 10.0),
+                ),
+                new Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Masukkan alamat',
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 40.0),
+            child: Text(
+              "Nomor BPJS",
+              style: TextStyle(color: Colors.grey, fontSize: 16.0),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.grey.withOpacity(0.5),
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            margin:
+            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            child: Row(
+              children: <Widget>[
+                new Padding(
+                  padding:
+                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                  child: Icon(
+                    Icons.contacts,
+                    color: Colors.grey,
+                  ),
+                ),
+                Container(
+                  height: 30.0,
+                  width: 1.0,
+                  color: Colors.grey.withOpacity(0.5),
+                  margin: const EdgeInsets.only(left: 00.0, right: 10.0),
+                ),
+                new Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Masukkan BPJS',
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 40.0),
+            child: Text(
+              "Upload Foto Kartu BPJS",
+              style: TextStyle(color: Colors.grey, fontSize: 16.0),
+            ),
+          ),
+          Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            showImage(),
+            RaisedButton(
+              child: Text("Select Image from Gallery"),
+              onPressed: () {
+                pickImageFromGallery(ImageSource.gallery);
+              },
+            ),
+          ],
+        ),
+          ),
           Container(
             margin: const EdgeInsets.only(top: 20.0),
             padding: const EdgeInsets.only(left: 20.0, right: 20.0),
@@ -255,57 +495,52 @@ class _Register1State extends State<Register1> {
               children: <Widget>[
                 new Expanded(
                   child: RaisedButton(
-                    onPressed: (){
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Beranda()),
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => Beranda()),
                               );
-                    },
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                        splashColor: CustomColor.GreenLight,
-                        color: CustomColor.GreenDark,
-                        child: new Row(
-                          children: <Widget>[
-                            new Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text(
-                              "Register",
-                              style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        new Expanded(
-                          child: Container(
-                            
-                          ),
-                        ),
-                        new Transform.translate(
-                          offset: Offset(15.0, 0.0),
-                          child: new Container(
-                            padding: const EdgeInsets.all(5.0),
-                            child: FlatButton(
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius:
-                                  new BorderRadius.circular(28.0)),
-                              splashColor: Colors.white,
-                              color: Colors.white,
-                              child: Icon(
-                                Icons.arrow_forward,
-                                color: CustomColor.GreenDark,
+                              // Navigator.pop(context);
+                            },
+                            textColor: Colors.white,
+                            padding: const EdgeInsets.all(0.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(21.0),
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.0,
+                              height: 60,
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: <Color>[
+                                    CustomColor.BlueLight,
+                                    CustomColor.BlueDark,
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(28.0),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: CustomColor.BlueShadow,
+                                    blurRadius: 2.0,
+                                    spreadRadius: 1.0,
+                                    offset: Offset(0.0, 0.0),
+                                  ),
+                                ],
                               ),
-                              onPressed: (){
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Beranda()),
-                              );
-                              },
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              child: Center(
+                                child: const Text(
+                                  'DAFTAR',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
                             ),
                           ),
-                        )
-                      ],
-                    ),
-                   
-                  ),
                 ),
               ],
             ),
@@ -314,7 +549,9 @@ class _Register1State extends State<Register1> {
         ],
       ),
         ),
-      ),
+          ]
+      )
+    ),
     );
       
   }
@@ -340,4 +577,5 @@ class MyClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper oldClipper) {
     return true;
   }
+  
 }

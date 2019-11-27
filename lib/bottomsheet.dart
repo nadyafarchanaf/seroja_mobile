@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:seroja/beranda.dart';
 import 'color.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
-class Modal {
+class Modal{
+  String _date = "Pilih tanggal";
   mainBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -73,27 +74,15 @@ class Modal {
                         children: <Widget>[
                           SizedBox(height: 10),
                           Text(
-                            'Add new task',
+                            'Formulir Pendaftaran',
                             style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w600),
+                                fontSize: 17, fontWeight: FontWeight.w600),
                           ),
                           SizedBox(height: 10),
                           Container(
                             width: MediaQuery.of(context).size.width / 1.2,
-                            child: TextFormField(
-                              initialValue: 'Book a table for dinner ',
-                              autofocus: true,
-                              style: TextStyle(
-                                  fontSize: 22, fontStyle: FontStyle.normal),
-                              decoration:
-                                  InputDecoration(border: InputBorder.none),
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Container(
-                            width: MediaQuery.of(context).size.width / 1.2,
-                            height: 60,
-                            padding: EdgeInsets.symmetric(vertical: 15),
+                            height: 75,
+                            padding: EdgeInsets.only(top: 10),
                             decoration: BoxDecoration(
                               border: Border(
                                 top: BorderSide(
@@ -106,6 +95,49 @@ class Modal {
                                 ),
                               ),
                             ),
+                            child : Column(
+                                    children: <Widget>[
+                                      Container(
+                                        width: MediaQuery.of(context).size.width / 1.2,
+                                        child: Text(
+                                          'Keluhan penyakit',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              color: CustomColor.TextHeader,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                      
+                                      Container(
+                                          width: MediaQuery.of(context).size.width / 1.2,
+                                          child: TextFormField(
+                                            autofocus: true,
+                                            style: TextStyle(
+                                                fontSize: 15, fontStyle: FontStyle.normal),
+                                            decoration:
+                                                InputDecoration(border: InputBorder.none),
+                                          ),
+                                        ),
+                                    ]
+                                        )
+                                  
+                          ),
+                          
+                          SizedBox(height: 5),
+                          Container (
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            child: Text(
+                              'Poli yang akan dituju',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: CustomColor.TextHeader,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                           Container(
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            height: 50,
+                            padding: EdgeInsets.symmetric(vertical: 10),
                             child: ListView(
                               scrollDirection: Axis.horizontal,
                               shrinkWrap: true,
@@ -113,101 +145,153 @@ class Modal {
                                 Center(
                                   child: Row(
                                     children: <Widget>[
-                                      Container(
-                                        height: 10.0,
-                                        width: 10.0,
-                                        margin: EdgeInsets.only(right: 4),
-                                        decoration: BoxDecoration(
-                                          color: CustomColor.YellowAccent,
-                                          shape: BoxShape.circle,
-                                        ),
+                                      FlatButton(
+                                         color: Colors.white,
+                                        child : Container (
+                                        child: Text('Poli Anak'),
                                       ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 10),
-                                        child: Text('Personal'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Center(
-                                  child: Container(
-                                    margin: EdgeInsets.only(right: 10),
-                                    child: Text(
-                                      'Work',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 5, horizontal: 10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(5),
-                                      ),
-                                      color: CustomColor.GreenIcon,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: CustomColor.GreenShadow,
-                                          blurRadius: 5.0,
-                                          spreadRadius: 3.0,
-                                          offset: Offset(0.0, 0.0),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Center(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        height: 10.0,
-                                        width: 10.0,
-                                        margin: EdgeInsets.only(right: 4),
-                                        decoration: BoxDecoration(
-                                          color: CustomColor.PurpleIcon,
-                                          shape: BoxShape.circle,
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 10),
-                                        child: Text('Meeting'),
-                                      ),
+                                      onPressed: (){},
+                                      )
                                     ],
                                   ),
                                 ),
                                 Center(
                                   child: Row(
                                     children: <Widget>[
-                                      Container(
-                                        height: 10.0,
-                                        width: 10.0,
-                                        margin: EdgeInsets.only(right: 4),
-                                        decoration: BoxDecoration(
-                                          color: CustomColor.BlueIcon,
-                                          shape: BoxShape.circle,
-                                        ),
+                                      FlatButton(
+                                         color: Colors.white,
+                                        child : Container (
+                                        child: Text('Poli THT'),
                                       ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 10),
-                                        child: Text('Study'),
+                                      onPressed: (){},
+                                      )
+                                    ],
+                                  ),
+                                ),
+                               Center(
+                                  child: Row(
+                                    children: <Widget>[
+                                      FlatButton(
+                                         color: Colors.white,
+                                        child : Container (
+                                        child: Text('Poli Dalam'),
                                       ),
+                                      onPressed: (){},
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                
+                              ],
+                            ),
+                            
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            height: 50,
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              children: <Widget>[
+                                Center(
+                                  child: Row(
+                                    children: <Widget>[
+                                      FlatButton(
+                                         color: Colors.white,
+                                        child : Container (
+                                        child: Text('Poli Kandungan'),
+                                      ),
+                                      onPressed: (){},
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                
+                               Center(
+                                  child: Row(
+                                    children: <Widget>[
+                                      FlatButton(
+                                         color: Colors.white,
+                                        child : Container (
+                                        child: Text('Poli Jantung'),
+                                      ),
+                                      onPressed: (){},
+                                      )
                                     ],
                                   ),
                                 ),
                                 Center(
                                   child: Row(
                                     children: <Widget>[
-                                      Container(
-                                        height: 10.0,
-                                        width: 10.0,
-                                        margin: EdgeInsets.only(right: 4),
-                                        decoration: BoxDecoration(
-                                          color: CustomColor.OrangeIcon,
-                                          shape: BoxShape.circle,
-                                        ),
+                                      FlatButton(
+                                         color: Colors.white,
+                                        child : Container (
+                                        child: Text('Poli Anak'),
                                       ),
-                                      Container(
-                                        margin: EdgeInsets.only(right: 10),
-                                        child: Text('Shopping'),
+                                      onPressed: (){},
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 1.2,
+                            height: 50,
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                
+                                bottom: BorderSide(
+                                  width: 1.0,
+                                  color: CustomColor.GreyBorder,
+                                ),
+                              ),
+                            ),
+                            
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              children: <Widget>[ 
+                               Center(
+                                  child: Row(
+                                    children: <Widget>[
+                                      FlatButton(
+                                         color: Colors.white,
+                                        child : Container (
+                                        child: Text('Poli Gigi'),
                                       ),
+                                      onPressed: (){},
+                                      )
+                                    ],
+                                  ),
+                                ),
+                               Center(
+                                  child: Row(
+                                    children: <Widget>[
+                                      FlatButton(
+                                         color: Colors.white,
+                                        child : Container (
+                                        child: Text('Poli Saraf'),
+                                      ),
+                                      onPressed: (){},
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Center(
+                                  child: Row(
+                                    children: <Widget>[
+                                      FlatButton(
+                                         color: Colors.white,
+                                        child : Container (
+                                        child: Text('Poli Kulit'),
+                                      ),
+                                      onPressed: (){},
+                                      )
                                     ],
                                   ),
                                 ),
@@ -218,30 +302,36 @@ class Modal {
                           Container(
                             width: MediaQuery.of(context).size.width / 1.2,
                             child: Text(
-                              'Choose date',
+                              'Tanggal Pemeriksaan',
                               textAlign: TextAlign.left,
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: CustomColor.TextHeader,
+                                fontWeight: FontWeight.w600,
+                                      ),
                             ),
                           ),
                           SizedBox(height: 10),
                           Container(
                             width: MediaQuery.of(context).size.width / 1.2,
-                            child: Row(
-                              children: <Widget>[
-                                Text(
-                                  'Today, 19: - 21:00',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                SizedBox(width: 5),
-                                RotatedBox(
-                                  quarterTurns: 1,
-                                  child: Icon(Icons.chevron_right),
-                                ),
-                              ],
+                            child: FlatButton(
+                            onPressed: () {
+                                DatePicker.showDatePicker(context,
+                                                      showTitleActions: true,
+                                                      minTime: DateTime(2019, 3, 5),
+                                                      maxTime: DateTime(2219, 6, 7), onConfirm: (date) {
+                            print('confirm $date');
+                            _date = '${date.year} - ${date.month} - ${date.day}';
+                            return _date;
+                            }, currentTime: DateTime.now(), locale: LocaleType.id);
+                             },
+                            child: Text(
+                              '$_date',
+                              textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 15, ),
                             ),
+                          ),
                           ),
                           SizedBox(height: 20),
                           RaisedButton(
@@ -255,11 +345,11 @@ class Modal {
                             textColor: Colors.white,
                             padding: const EdgeInsets.all(0.0),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
+                              borderRadius: BorderRadius.circular(28.0),
                             ),
                             child: Container(
                               width: MediaQuery.of(context).size.width / 1.2,
-                              height: 60,
+                              height: 50,
                               decoration: const BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: <Color>[
@@ -268,7 +358,7 @@ class Modal {
                                   ],
                                 ),
                                 borderRadius: BorderRadius.all(
-                                  Radius.circular(8.0),
+                                  Radius.circular(28.0),
                                 ),
                                 boxShadow: [
                                   BoxShadow(
@@ -283,7 +373,7 @@ class Modal {
                                   const EdgeInsets.fromLTRB(20, 10, 20, 10),
                               child: Center(
                                 child: const Text(
-                                  'Add task',
+                                  'DAFTAR',
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500),

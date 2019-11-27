@@ -61,53 +61,62 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
               ),
               Expanded(
-                flex: 1,
-                child: RaisedButton(
-                  onPressed: () {
-                    // HERO-ANIMATION: https://github.com/flutter/flutter/issues/28041
-                    // Navigator.of(context).pushReplacement(
-                    //   PageRouteBuilder(
-                    //     transitionDuration: Duration(seconds: 1),
-                    //     pageBuilder: (_, __, ___) => Empty(),
-                    //   ),
-                    // );
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => WelcomePage2()),
-                    );
-                  },
-                  textColor: Colors.white,
-                  padding: const EdgeInsets.all(0.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(28.0),
-                  ),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width / 1.4,
-                    height: 50,
-                    decoration: const BoxDecoration(
-                      color: CustomColor.GreenDark,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(28.0),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          blurRadius: 6.0,
-                          spreadRadius: 3.0,
-                          offset: Offset(0.0, 0.0),
-                        ),
-                      ],
-                    ),
-                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    child: Center(
-                      child: const Text(
-                        'Mulai',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ),
+                child : Container(
+            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: new Row(
+              children: <Widget>[
+                new Expanded(
+                  child: RaisedButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => WelcomePage2()),
+                              );
+                              // Navigator.pop(context);
+                            },
+                            textColor: Colors.white,
+                            padding: const EdgeInsets.all(0.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(21.0),
+                            ),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width / 1.0,
+                              height: 60,
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: <Color>[
+                                    CustomColor.BlueLight,
+                                    CustomColor.BlueDark,
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(21.0),
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: CustomColor.BlueShadow,
+                                    blurRadius: 2.0,
+                                    spreadRadius: 1.0,
+                                    offset: Offset(0.0, 0.0),
+                                  ),
+                                ],
+                              ),
+                              padding:
+                                  const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                              child: Center(
+                                child: const Text(
+                                  'MULAI',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                            ),
+                          ),
                 ),
+              ],
+            ),
+          ),
               ),
               Expanded(
                 flex: 1,
